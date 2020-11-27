@@ -16,16 +16,18 @@ namespace BizBook365.Sale.Api.Controllers
         [HttpGet]
         public bool Get()
         {
-            var factory = new ConnectionFactory() { HostName = "localhost" };
+            var factory = new ConnectionFactory() { HostName = "localhost"};
             using (var connection = factory.CreateConnection())
             using (var channel = connection.CreateModel())
             {
-                channel.QueueDeclare(queue: "hello", durable: false, exclusive: false, autoDelete: false, arguments: null);
+                channel.ExchangeDeclare(exchange: "events", type: ExchangeType.Fanout);
 
-                string message = $"Micro service is awesome at {DateTime.Now:G}";
+                //channel.QueueDeclare(queue: "hello-y", durable: false, exclusive: false, autoDelete: false, arguments: null);
+
+                string message = $"{Guid.NewGuid().ToString()} at {DateTime.Now:G}";
                 var body = Encoding.UTF8.GetBytes(message);
 
-                channel.BasicPublish(exchange: "", routingKey: "hello", basicProperties: null, body: body);
+                channel.BasicPublish(exchange: "events", routingKey: "", basicProperties: null, body: body);
                 Console.WriteLine(" [x] Sent {0}", message);
             }
 
