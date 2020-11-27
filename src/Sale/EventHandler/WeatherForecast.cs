@@ -1,6 +1,6 @@
 using System;
 
-namespace MessageHandler
+namespace BizBook365.Sale.EventHandler
 {
     public class WeatherForecast
     {
