@@ -2,20 +2,22 @@ const express = require('express')
 var amqp = require('amqplib/callback_api');
 
 const app = express()
-const port = 3000;
+const port = 51001;
 let rabbitMQChannel = null;
+const exchange = 'events';
 
-app.get('/api/rabbitmqmessage', (req, res) => {
+app.get('/api/rabbitmessage', (req, res) => {
     let msg = 'awesome message from node rabbitmq';
-    var queue = 'hello';
-    rabbitMQChannel.sendToQueue(queue, Buffer.from(msg));
+    //var queue = 'hello';
+    //rabbitMQChannel.sendToQueue(queue, Buffer.from(msg));
+    rabbitMQChannel.publish(exchange, '', Buffer.from(msg));
     console.log(" [x] Sent %s", msg);
     res.send('Thank you!');
 });
 
 app.get('/', (req, res) => {
     res.send('Hello World!');
-})
+});
 
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`);
@@ -30,7 +32,6 @@ app.listen(port, () => {
                 throw error1;
             }
 
-            var exchange = 'events';
             channel.assertExchange(exchange, 'fanout', {
                 durable: false
             });
