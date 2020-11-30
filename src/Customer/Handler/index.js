@@ -2,7 +2,7 @@ const express = require('express')
 var amqp = require('amqplib/callback_api');
 
 const app = express()
-const port = 51001;
+const port = 52001;
 let rabbitMQChannel = null;
 const exchange = 'events';
 

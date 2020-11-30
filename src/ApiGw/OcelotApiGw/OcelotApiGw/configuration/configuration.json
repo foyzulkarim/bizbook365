@@ -6,7 +6,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 50001
+          "Port": 51001
         }
       ],
       "UpstreamPathTemplate": "/api/sale/{everything}",
@@ -14,7 +14,11 @@
         "POST",
         "PUT",
         "GET"
-      ]
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "a55ae165-912d-4052-b61e-aeeb6d6d2c07",
+        "AllowedScopes": []
+      }
     },
     {
       "DownstreamPathTemplate": "/api/{everything}",
@@ -22,7 +26,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 51001
+          "Port": 52001
         }
       ],
       "UpstreamPathTemplate": "/api/customer/{everything}",
@@ -34,6 +38,6 @@
     }
   ],
   "GlobalConfiguration": {
-    "BaseUrl": "https://localhost:5001"
+    "BaseUrl": "https://localhost:50001"
   }
 }

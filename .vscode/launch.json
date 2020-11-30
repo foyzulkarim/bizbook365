@@ -1,0 +1,38 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": ".NET Core Launch (Ocelot)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build (OcelotApiGw)",
+            "program": "${workspaceFolder}/src/ApiGw/OcelotApiGw/OcelotApiGw/bin/Debug/net5.0/OcelotApiGw.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "stopAtEntry": false,
+            "console": "internalConsole",
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development",
+                "ASPNETCORE_URLS": "https://localhost:50001;http://localhost:50000"
+            }
+        },
+        {
+            "name": ".NET Core Launch (Sale)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build (Api)",
+            "program": "${workspaceFolder}/src/Sale/api/bin/Debug/net5.0/BizBook365.Sale.Api.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "stopAtEntry": false,
+            "console": "internalConsole",
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development",
+                "ASPNETCORE_URLS": "https://localhost:51001;http://localhost:51000"
+            }
+        }
+    ]
+}

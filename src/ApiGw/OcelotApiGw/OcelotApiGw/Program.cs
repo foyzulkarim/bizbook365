@@ -23,7 +23,7 @@ namespace OcelotApiGw
             IHostBuilder builder = Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); });
             builder.ConfigureServices(x => x.AddSingleton(builder)).ConfigureAppConfiguration(x =>
-                x.AddJsonFile(Path.Combine("configuration", "configuration.json")));
+                x.AddJsonFile(@"C:\github\my\bizbook365\src\ApiGw\OcelotApiGw\OcelotApiGw\bin\Debug\net5.0\configuration\configuration.json").AddJsonFile(@"C:\github\my\bizbook365\src\ApiGw\OcelotApiGw\OcelotApiGw\bin\Debug\net5.0\appsettings.json")); // todo: need to configure this path later
 
             return builder;
         }
